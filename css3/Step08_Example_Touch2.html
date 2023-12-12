@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Step08_Example_Touch2.html</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<style>
+	body{
+		margin-top: 100px;	
+	}
+	.wrapper{
+		perspective: 1000px;
+		perspective-origin: 50% 50%;
+		width: 600px;
+		margin: 0 auto;
+		border: 1px solid red;
+		height: 400px;
+	}
+	.carousel{
+		transform-style: preserve-3d;
+		position: relative;
+		width: 600px;
+		height: 400px;
+		transform: translateZ(-724px);
+		/* transition: all 0.4s ease-out; */
+	}
+	/* transition을 적용할 클래스를 정의한다. */
+	.transition{
+		transition: transform 0.4s ease-out;
+	}
+	.carousel > div{
+		position: absolute; /* 8개의 div 겹치기*/
+		width: 600px;
+		height: 400px;
+		border: 1px solid green
+	}
+	.carousel > div:nth-child(1){
+		transform: translateZ(724px);
+	}
+	.carousel > div:nth-child(2){
+		transform: rotateY(45deg) translateZ(724px);
+	}
+	.carousel > div:nth-child(3){
+		transform: rotateY(90deg) translateZ(724px);
+	}
+	.carousel > div:nth-child(4){
+		transform: rotateY(135deg) translateZ(724px);
+	}
+	.carousel > div:nth-child(5){
+		transform: rotateY(180deg) translateZ(724px);
+	}
+	.carousel > div:nth-child(6){
+		transform: rotateY(225deg) translateZ(724px);
+	}
+	.carousel > div:nth-child(7){
+		transform: rotateY(270deg) translateZ(724px);
+	}
+	.carousel > div:nth-child(8){
+		transform: rotateY(315deg) translateZ(724px);
+	}
+</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="carousel transition">
+			<div><img src="images/1.png"></div>
+			<div><img src="images/2.png"></div>
+			<div><img src="images/3.png"></div>
+			<div><img src="images/4.png"></div>
+			<div><img src="images/5.png"></div>
+			<div><img src="images/6.png"></div>
+			<div><img src="images/7.png"></div>
+			<div><img src="images/8.png"></div>
+		</div>
+	</div>
+	<div class="container">
+		<ul class="pager">
+			<li><a href="javascript:" id="prev">이전</a></li>
+			<li><a href="javascript:" id="next">다음</a></li>
+		</ul>
+	</div>
+	<script src="js/jquery-3.2.0.js"></script>
+	<!-- 터치 스와이프 플러그인 로딩 -->
+	<script src="js/jquery.touchSwipe.js"></script>
+	<script>
+		//n 각형의 폭을 함수에 전달하면 div 를 배치할때 rotateY 값과 translateZ 가 Object 로 리턴되는 함수 
+		function getAngleNtz(n, width) {
+			var angle = Math.round(360 / n);
+			var tz = Math.round((width / 2) / Math.tan((angle * Math.PI) / (2 * 180)));
+			var obj = {
+			  angle: angle,
+			  tz: tz
+			};
+			return obj;
+		}
+		/*
+		콘솔창에
+		
+		getAngleNtz(4,400)
+		Object {angle: 90, tz: 200}
+
+		getAngleNtz(8,600)
+		Object {angle: 45, tz: 724}
+
+		var obj = getAngleNtz(8,600)
+		undefined
+		
+		obj
+		Object {angle: 45, tz: 724}
+		*/
+
+		var rY=0;
+
+		// rY 값을 cauousel 의 회전 값에 반영하는 함수
+		var rotate_rY = function(){
+			$(".carousel")
+			.css("transform","translateZ(-724px) rotateY("+rY+"deg)");
+		};	
+
+		// 최초 처티가 시작된 시점의 rY 값을 저장할 변수
+		var startRY = 0;
+
+
+
+		$("#prev").click(function(){
+			// 큐브를 y축을 정면에서 바라봤을 때 기준 시계방향으로 45도 회전
+			rY+=45;
+			rotate_rY();
+		});
+		$("#next").click(function(){
+			// 큐브를 y축 기준 반 시계방향으로 45도 회전
+			rY-=45;
+			rotate_rY();
+		});
+		
+
+		// 터치 이벤트 처리
+		$(".carousel").swipe({
+			swipeStatus:function(e, phase, direction, distance){
+				if(phase=="start"){
+					// 터치 시작 시점의 rY 값을 변수에 저장한다.
+					startRY = rY;
+					// 움직이고 있을때 transition이 적용되면 답답하니까 제거
+					$(this).removeClass("transition");
+				}else if(phase=="move"){
+					if(direction=="left"){
+						// rY-=distance/20; //1. rY-=1 로 하면 1px 움직이면 1도 움직이고 100px 움직이면 100도 움직이니까 조금 줄여 따라서 /5 해준것.
+						rY = startRY - distance/5; //3. 기준점을 잡아두고 거기에서 빼거나 더한 값을 반영
+					}else if(direction=="right"){
+						// rY=rY+distance/20; //2. 0>10>20>30>40>50  이렇게 계속 움직여서 50만 움직이면 150이 반영됨. 따라서 최초 터치가 시작된 지검에서 의 rotateY 값을 반영해야해
+						rY = startRY + distance/5; //3. 기준점을 잡아두고 거기에서 빼거나 더한 값을 반영
+					}
+					rotate_rY();
+				}else if(phase=="end"){
+					if(direction=="left"){
+						rY = startRY-45;
+					}else if(direction=="right"){
+						rY = startRY+45;
+					}
+					// 터치가 끝나고 움직일때에는 transition을 적용
+					$(this).addClass("transition");
+					rotate_rY();
+				}else if(phase=="cancel"){
+					rY = startRY;
+					// 터치가 끝나고 움직일때에는 transition을 적용
+					$(this).addClass("transition");
+					rotate_rY();
+				}
+			},
+			threshold:100, // 최소로 움직여야 하는 거리 조절 가능, 이거 주면 distance/5 이걸 안해주고 distance 만 해도 됨. cause 같은 기능이라서
+			allowPageScroll:"vertical" // 위아래 움직이는거를 안먹히게 하려고
+
+			// 오브젝트니까
+			//swipeStatus:function(e, phase, direction, distance){},threshold:100,allowPageScroll:"vertical"
+			// 이렇게 3개 준것 방이름:value
+		});
+
+	</script>
+</body>
+</html>

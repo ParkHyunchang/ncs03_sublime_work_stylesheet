@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step08_Display.html</title>
+	<style>
+		/* 
+			display: none | inline | block | inline-block 
+			none => 안보이게
+			inline => 인라인 요소로 보이게
+			block => 블럭 요소로 보이게
+			inline-block => 인라인 블럭 요소로 보이게 
+		*/
+		#one, #two{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button id="showBtn">보이게 하기</button>
+	<button id="hideBtn">숨기게 하기</button>
+	<br>
+	<img id="one" src="images/kim1.png">
+	<p id="two">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium impedit enim eligendi quaerat delectus temporibus reprehenderit, cupiditate, saepe facere, harum unde molestias obcaecati sequi officia modi incidunt libero minus aut.</p>
+	<script>
+		// 버튼을 누를때 동작하게 하기
+		document.querySelector("#showBtn").addEventListener("click",function(){
+			// display 메뉴 추가해서 블록 요소로 보이게 하기
+			document.querySelector("#one").style.display="inline";
+			// document.querySelector("#one").setAttribute('style','display:inline');
+			
+			document.querySelector("#two").style.display="block"; // 원래 block 요소이니까 block 해서 보이게
+		});
+		// 버튼을 누를때 동작하게 하기
+		document.querySelector("#hideBtn").addEventListener("click",function(){
+			// display 메뉴 추가해서 블록 요소로 숨기게 하기
+			document.querySelector("#one").style.display="none";
+			// document.querySelector("#one").setAttribute('style','display:none');
+			
+			document.querySelector("#two").style.display="none";
+		});
+	</script>
+</body>
+</html>

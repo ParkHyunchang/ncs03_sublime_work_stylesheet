@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step16_emRem.html</title>
+	<style>
+		html{ /* 이거 지정 안하면 기본 html의 글자 크기는 16px 임. */
+			font-size: 10px;
+		}
+		body{
+			font-size: 14px;
+		}
+		/* em 은 상속 받은 글자 크리를 기준으로 하는 상대 크기 이다. */
+		#one{
+			/* 상속 받은 글자 크기의 2배 */
+			font-size: 2em;
+		}
+		#two{
+			/* 최상위 (html) 의 기본 글자 크기를 기준으로한 상대크기 */
+			font-size: 2rem;
+			/* 만약 모든 글자크기를 rem으로 지정하면 html 글자 크기를 바꾸는 순간 모든 페이지의 글자크기 변경가능 */
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<p>.container text1</p>
+		<p id="one">.container text2 글자 크기:28px</p>
+		<p id="two">.container text3 글자 크기:20px</p>
+		<div class="wrapper">
+			<p>.wrapper text1</p>
+			<p>.wrapper text2</p>
+		</div>
+	</div>
+</body>
+</html>

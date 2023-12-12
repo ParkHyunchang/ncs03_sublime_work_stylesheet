@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step07_Example4.html</title>
+	<style>
+		.wrapper{
+			width: 500px;
+			height: 500px;
+			background-color: yellow;
+			/* 좌우로 가운데 정렬 할때 사용 */
+			margin: 0 auto; 
+			/*
+			top,bottom = 0 right,left = auto  --> 이거 의미는 좌우 똑같이~ 
+			좌우 오토로 두려면 width가 정해져 있어야해. 이 경우에는 500px 로 정해져 있어
+			*/
+			position: relative;
+			/* overflow: hidden; 오버 플로우 된것을 감춰*/
+		}
+		.box{
+			width: 100px;
+			height: 500px;
+			background-color: #000;
+			color: #fff;
+			position: absolute;
+			top: 0px;
+			left: -100px;  
+			/*
+			포지션 relative 와 absolute 그리고 이 -100 이 있어야 wrapper 위에 box 가 있는게 아니라 wrapper 옆에 box 가 붙어
+			바깥으로 빠져 나온 것을 overflow 라고 해
+			*/
+
+			/* 자바 스크립트로 -100 에서 0으로 바꾸면서 보이게 하면 슬라이드 메뉴로 활용 할수 있음*/
+		}
+	</style>
+</head>
+<body>
+	<h1>position 연습</h1>
+	<div class="wrapper">
+		<div class="box">box</div>
+	</div>
+</body>
+</html>

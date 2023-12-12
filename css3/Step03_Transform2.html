@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step03_Transform2.html</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<style>
+		#rabbit{transition: all 0.4s ease-out;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<button class="btn btn-primary" id="left_btn"><i class="glyphicon glyphicon-chevron-left"></i></button>
+		<button class="btn btn-info" id="rotate_btn"><i class="glyphicon glyphicon-repeat"></i></button>
+		<button class="btn btn-primary" id="right_btn"><i class="glyphicon glyphicon-chevron-right"></i></button>
+		<br>
+		<img src="images/rabbit_1.png" id="rabbit">
+	</div>
+	<script src="js/jquery-3.2.0.js"></script>
+	<script>
+		// x축 평행이동 값
+		var x=0;
+		// 회전량
+		var angle=0;
+
+
+		$("#left_btn").click(function(){
+			x-=100;
+			$("#rabbit")
+			.css("transform","translateX("+x+"px) rotate("+angle+"deg)");
+
+		});
+		$("#rotate_btn").click(function(){
+			angle+=45;
+			$("#rabbit")
+			.css("transform","translateX("+x+"px) rotate("+angle+"deg)");
+		});
+		$("#right_btn").click(function(){
+			x+=100;
+			$("#rabbit")
+			.css("transform","translateX("+x+"px) rotate("+angle+"deg)");
+
+		});
+	</script>
+</body>
+</html>

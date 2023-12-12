@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step15_Quiz.html</title>
+	<style>
+		/* 가로 세로 500px 인 div 안에서 가로 세로 100px 인 div 가 수평, 수직으로 중앙정렬 되도록 해 보세요 */
+		
+		.wrapper{
+			width: 500px;
+			height: 500px;
+			background-color: yellow;
+			position: relative;
+		}
+		/*
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: #000;
+			color: #fff;
+			position: absolute;
+			//수직으로 가운데 정렬하기 위해 
+			top: 50%; //이것만 하면 box의 테두리가 50% 떨어져 그래서 작은 박스의 절반 크기 만큼 margin 으로 줄여주면 중간으로 와
+			margin-top: -50px;
+			//수평으로 가운데 정렬하기 위해 
+			left: 50%;
+			margin-left: -50px;
+		}
+		*/
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: #000;
+			color: #fff;
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="box">box</div>
+	</div>
+</body>
+</html>

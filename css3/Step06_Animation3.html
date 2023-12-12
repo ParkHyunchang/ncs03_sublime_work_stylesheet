@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step06_Animation3.html</title>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+			background-color: #0f0;
+		}
+
+		.shake{
+			animation: shakeX 0.01s 30 linear alternate;
+		}
+
+		@keyframes shakeX{
+			0%{
+				transform: translateX(-10px);
+			}
+			100%{
+				transform: translateX(10px)
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<button id="shakeBtn">shake</button>
+	<script src="js/jquery-3.2.0.js"></script>
+	<script>
+		/*
+			콘솔창에
+
+			$(".box")
+			[div.box.shake, prevObject: jQuery.fn.init(1)]
+			
+			$(".box").addClass("shake")  // 이미 shake 클래스가 있어서 적용안돼
+			[div.box.shake, prevObject: jQuery.fn.init(1)]
+			
+			$(".box").removeClass("shake")   // 따라서 클래스 지우고
+			[div.box, prevObject: jQuery.fn.init(1)]
+			
+			$(".box").addClass("shake")    // 다시적용하면 흔들림
+			[div.box.shake, prevObject: jQuery.fn.init(1)]
+
+		*/
+		// 버튼을 눌렀을때 anmation 적용하기
+		$("#shakeBtn").click(function(){
+			$(".box").addClass("shake");
+		});
+
+		// 애니메이션이 끝났을때 실행할 함수 등록
+		$(".box").on("animationend",function(){
+			$(".box").removeClass("shake");
+		});
+
+	</script>
+</body>
+</html>

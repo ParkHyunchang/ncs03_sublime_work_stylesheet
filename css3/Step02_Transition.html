@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step02_Transition.html</title>
+	<style>
+		.box{
+			border: 1px solid red;
+			width: 100px;
+			height: 100px;
+			background-color: #0f0;
+		}
+		.box:hover{
+			background-color: #f0f;
+			margin-left: 50px;
+			width: 150px;
+			height: 150px;
+		}
+		.effect1{
+			transition-property: background-color;
+			transition-duration: 1s;
+			transition-timing-function: linear;
+			/* 이걸 한줄로 줄인게 effect2 */
+		}
+		.effect2{
+			transition: background-color 1s linear;
+		}
+		.effect3{
+			/* 일정 속도로 감 */
+			transition: margin-left 1s linear; 
+		}
+		.effect4{
+			/* 일정 속도로 가다가 느려짐, 이게 타이밍함수중에 가장 많이쓰는 효과임 (ease-in, ease-in-out 도 있음) */
+			transition: margin-left 1s ease-out;
+		}
+		.effect5{
+			transition: width 1s ease-out, height 1s ease-out, margin-left 1s ease-out, background-color 1s ease-out;
+		}
+		.effect6{
+			transition: all 1s ease-out;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box effect1"></div>
+	<div class="box effect2"></div>
+	<div class="box effect3"></div>
+	<div class="box effect4"></div>
+	<div class="box effect5"></div>
+	<div class="box effect6"></div>
+</body>
+</html>

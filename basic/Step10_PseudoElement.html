@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step10_PseudoElement.html</title>
+	<style>
+		/* 가상 요소 선택 */
+		p:first-letter{
+			font-weight: bold;
+			color: red;
+		}
+		#one:first-line{
+			background-color: yellow;
+		}
+		/* 컨텐츠가 나오기 바로 직전 */
+		.quote:before{
+			content: "@";
+			color: blue;
+		}
+		/* 컨텐츠가 끝난 바로 이후 */
+		.quote:after{
+			content: "@";
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error possimus id rem, quia ea autem hic! Beatae error, excepturi labore odit aspernatur quia molestiae impedit atque vel, assumenda! Nihil, error?</p>
+	<p id="one">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error possimus id rem, quia ea autem hic! Beatae error, excepturi labore odit aspernatur quia molestiae impedit atque vel, assumenda! Nihil, error?</p>
+	<p class="quote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error possimus id rem, quia ea autem hic! Beatae error, excepturi labore odit aspernatur quia molestiae impedit atque vel, assumenda! Nihil, error?</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error possimus id rem, quia ea autem hic! Beatae error, excepturi labore odit aspernatur quia molestiae impedit atque vel, assumenda! Nihil, error?</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error possimus id rem, quia ea autem hic! Beatae error, excepturi labore odit aspernatur quia molestiae impedit atque vel, assumenda! Nihil, error?</p>
+</body>
+</html>

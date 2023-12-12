@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step05_3dCube.html</title>
+	<style>
+		.wrapper{ /* 3차원 공간으로 만드는게 perspective , perspective-origin 이거 두개 */
+			/* 컨텐츠와 내 시선 사이의 거리 */
+			perspective: 500px;
+			/* 시선의 위치 결정 */
+			perspective-origin: 50% 50%;
+			margin-top: 200px;
+			border: 1px solid red;
+		}
+		.cube{
+			transform-style: preserve-3d;
+			transform-origin: 50% 50%; /* 이거 생략가능 default가 50% 50% 라서 */
+			position: relative;
+			width: 400px;
+			height: 400px;	
+			margin: 0 auto;	/* 가운데 정렬 */
+			/* 왜 -200px 을 해주어야 하는지 이유를 아는게 중요!! */
+			/* 왜냐면 이걸 안해주면 밑에 이미지들을 z 축으로 200px 앞으로 땡겨서 밑에 있는 컨텐츠 들이 가려지니까 그걸 방지하기 위해서 큐브 자체를 -200px 해 준 것. */
+			transform: translateZ(-200px);
+			transition: all 0.4s ease-out;
+		}
+		.cube > div{
+			position: absolute;
+			width: 400px;
+			height: 400px;
+			opacity: 0.6;
+			background-color: #2e272f;
+		}
+		.cube img{
+			width: 400px;
+			height: 400px;
+		}
+		/* .cube 의 첫번째 자식요소 선택 */
+		.cube > div:nth-child(1){
+			transform: translateZ(200px);
+		}
+		.cube > div:nth-child(2){
+			transform: rotateY(90deg) translateZ(200px); /* rotateY를 하면서 z축도 같이 돌아. 따라서, 돌린후에 +z축으로 땡기면 앞으로 튀어나와(돌린거 기준으로) */
+		}
+		.cube > div:nth-child(3){
+			transform: rotateY(180deg) translateZ(200px);
+		}
+		.cube > div:nth-child(4){
+			transform: rotateY(270deg) translateZ(200px);
+		}
+		.cube > div:nth-child(5){
+			transform: rotateX(90deg) translateZ(200px);
+		}
+		.cube > div:nth-child(6){
+			transform: rotateX(-90deg) translateZ(200px);
+		}
+
+		.cube:hover{
+			transform: translateZ(-200px) rotateY(90deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="cube">
+			<div><img src="images/image1.png"></div>
+			<div><img src="images/image2.png"></div>
+			<div><img src="images/image3.png"></div>
+			<div><img src="images/image4.png"></div>
+			<div><img src="images/image5.png"></div>
+			<div><img src="images/image6.png"></div>
+		</div>
+	</div>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus nulla tempore possimus iure vero, nostrum. Corrupti nihil cupiditate quibusdam nulla nam, voluptates hic earum, deserunt eum asperiores aliquid dignissimos cum.</p>
+</body>
+</html>

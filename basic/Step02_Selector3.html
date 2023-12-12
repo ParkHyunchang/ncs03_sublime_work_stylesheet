@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step02_Selector3.html</title>
+	<style>
+		.container{
+			background-color: #cecece;
+		}
+		/* 클래스 명이 container 인 요소의 자손중에서 p 선택 */
+		.container p{  /* 띄어쓰기 : 자손 선택자; */
+			color: #ffff00;
+		}
+		/* 
+		> 가 들어가면 자식
+		.container > p{ 꺽쇄 : 자식 선택자;
+			color: #ffff00;
+		}
+		*/ 
+	</style>
+</head>
+<body>
+
+	<div class="container">
+<!-- 	
+		<div>
+			<p></p> -> 이 p 는 container의 자손이기는 한데 자식은 아니야 
+		</div> 
+-->
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident officia vitae nisi ut iste, dolor pariatur quis quia accusantium consequatur perspiciatis nihil magni quasi expedita maxime, illum aliquam adipisci ducimus?</p>
+	</div>
+
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, delectus quos quas aut totam, voluptate minus sunt quaerat iure nesciunt nihil, molestiae voluptas, dolorum nisi vero doloribus similique magni minima!</p>	
+
+</body>
+</html>

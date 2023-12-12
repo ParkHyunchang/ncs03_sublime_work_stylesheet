@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step06_PseudoClass.html</title>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			border: 1px solid red;
+		}
+
+		/* 
+			마우스가 올라간 요소만 이 선택자에 의해서 선택되
+			hover는 가상의 클래스야 == PseudoClass
+			콜른(:)은 가상의 클래스 선택자임 
+
+			- 아래, 위 마진은 누적되지 않아 (따라서 큰것만 남아)
+			ex) 위 박스의 margin-bottm = 10px 이고, 아래 박스의 margin-top=10px 이면 두 박스 사이의 margin은 20px 이 아니라 10px 이야
+
+			- 좌, 우 마진은 누적되
+			ex) 좌측 박스의 margin-right = 10px 이고, 우측 박스의 margin-left=10px 이면 두 박스 사이의 margin은 20px 이야
+		*/
+
+		/* 클래스 명이 box 이고 가상의 클래스 명이 hover인 요소 선택 */
+		.box:hover{
+			margin-top: 2px;
+			margin-left: 2px;
+			background-color: yellow;
+		}
+		/* 요소 명이 input 이면서 가상의 클래스 명이 focus 인 요소 선택 */
+		input:focus{
+			background-color: #ff00ff;
+		}
+		/* 요소 명이 button 이면서 가상의 클래스 명이 focus 인 요소 선택 */
+		button:focus{
+			color: red;
+		}
+		/* 요소 명이 button 이면서 가상의 클래스 명이 active 인 요소 선택 */
+		button:active{
+			width: 100px;
+			height: 100px;
+		}
+		/* 마우스를 올리지 않았을떄 밑줄 제거 */
+		a{
+			text-decoration: none;
+		}
+		
+		/* a 요소이면서 아직 방문하지 않은 링크 */
+		a:link{
+			color: #000000;
+		}
+
+		/* a 요소이면서 이미 방문한 링크 */
+		a:visited{
+			color: #cecece;
+		}
+		/* 
+		마우스를 올렸을때 밑줄 생성 , 이거 위치가 visited보다 위에 있으면 색상이 바뀌지 않아 따라서 css 를 정의하는 순서도 중요해, (a:visited 이거와 a:hover 은 요소명과 가상클래스의 조합도 같고 color 속성을 같이 정의 하고 있어, 
+		이렇게 css의 상세함이 똑같을땐 나중에 정의한게 이겨, css의 가중치 라는 것도 있어(요소명 보다는 클래스가 더 상세해)(클래스 보다는 아이디가 상세해), 상세 할 수록 우선돼) 
+		*/ 
+		a:hover{
+			text-decoration: underline;
+			color: blue;
+		}
+		/* p요소의 부모 입장에서 p요소 이면서 가상의 클래스 명이 first-chile 인 요소를 선택 
+			or 형제들 중에서 가장 앞에 요소이면서 p 요소 인것을 선택
+		*/
+		p:first-child{
+			background-color: #000000;
+			color: #ffffff;
+		}
+		p:last-child{
+			background-color: #000000;
+			color: #ffffff;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		
+		<input type="text">
+		<input type="text">
+		<input type="text">
+		<br>
+		<button>버튼</button>
+		<button>버튼</button>
+		<button>버튼</button>
+		<br>
+		<a href="http://study.kimgura.net">kimgura</a>
+		<a href="http://naver.com">naver</a>
+		<a href="http://yahoo.com">yahoo</a>
+		<div>
+
+			<!-- p{p$}*5 -->
+			<p>p1</p>
+			<div>div1</div>
+			<p>p2</p>
+			<p>p3</p>
+			<p>p4</p>
+			<p>p5</p>
+		</div>
+	</div>
+
+</body>
+</html>

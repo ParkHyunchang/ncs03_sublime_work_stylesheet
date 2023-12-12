@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step03_Transform.html</title>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: #0f0;
+			border: 1px solid red;
+			transition: all 0.5s ease-out;
+		}
+		#one:hover{
+			/* x축으로 평행이동 */
+			transform: translateX(50px);
+		}
+		#two:hover{
+			/* y축으로 평행이동 */
+			transform: translateY(50px);
+		}
+		#three:hover{
+			transform: translateX(50px) translateY(50px);
+		}
+		#four:hover{
+			transform: rotate(45deg);
+		}
+		#five:hover{
+			transform: scale(1.5);
+		}
+		img{
+			transition: all 0.6s ease-out;
+		}
+		img:hover{
+			background-color: #f0f;
+			transform: translateX(100px) translateY(100px) rotate(10deg) scale(0.7);
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="one"></div>
+	<div class="box" id="two"></div>
+	<div class="box" id="three"></div>
+	<div class="box" id="four"></div>
+	<div class="box" id="five"></div>
+	<img src="images/blog-title.png">
+	<div class="box" id="six"></div>
+	<button id="moveBtn">이동</button>
+	<script src="js/jquery-3.2.0.js"></script>
+	<script>
+		$("#moveBtn").click(function(){
+			// 여기서 100px 은 누적되는 값이 아니라 절대 값
+			$("#six").css("transform","translateX(100px)")
+		});
+	</script>
+</body>
+</html>

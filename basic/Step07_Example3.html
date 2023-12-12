@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step07_Example3.html</title>
+	<style>
+		.wrapper{
+			width: 300px;
+			border:1px solid red;
+			position: relative;
+		}
+		.wrapper input{
+			display: block;
+			width: 246px;  /*padding 이 width에 포함이 안되니까 296(크기 맞추려고 300에서 조금 뺸것) 에서 -50 한것*/
+			padding-right: 50px; /*검색 버튼 밑에 글자가 안깔리게 하려고 padding-right 를 50 준것*/
+		}
+		.wrapper button{
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="wrapper">
+			<input type="text">
+			<button>검색</button>
+		</div>
+	</div>
+</body>
+</html>

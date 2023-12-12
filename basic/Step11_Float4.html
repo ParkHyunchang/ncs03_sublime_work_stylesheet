@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step11_Float4.html</title>
+	<style>
+		/* ul 요소의 기본 스타일 제거 */
+		.wrapper ul{
+			list-style-type: none; /* 똥그라미 없애기 */
+			margin: 0;
+			padding: 0;
+		}
+		.wrapper ul li{
+			float: left; /* display: inline; 이거 해줘도 됨*/
+			padding: 0 5px;
+			border-right: 2px solid #cecece; /* 각 li 사이에 경계선 삽입 */
+		}
+		.wrapper ul li:last-child{
+			border-right-width: 0; /* 맨 마지막 옆에 경계선 삭제 */
+		}
+		/* a 요소의 기본 스타일 제거 */
+		.wrapper ul li a{
+			text-decoration: none;
+			color: #000;
+		}
+		.wrapper ul li:hover{
+			background-color: yellow;
+			text-decoration: underline;
+		}
+		.wrapper ul li a:focus{ /* 탭으로 포커스가 가면 밑줄 추가 */
+			text-decoration: underline;;
+		}
+		p{
+			clear: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">News</a></li>
+			<li><a href="#">Game</a></li>
+			<li><a href="#">Caffee</a></li>
+		</ul>
+	</div>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore aliquid eos rem aperiam, provident itaque vel, delectus perferendis quibusdam qui quia, ut quod, quaerat eligendi! Sequi dignissimos ullam, doloribus error.</p>
+</body>
+</html>

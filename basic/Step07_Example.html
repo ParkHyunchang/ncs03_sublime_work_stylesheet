@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step07_Example.html</title>
+	<style>
+		p{
+			background-color: #00ff00;
+		}
+		
+		/* fixed 하고 전부 0을 줬으니 보이는 화면 전부 꽉차게 선택한것. */
+		.backdrop{
+			background-color: #000000;
+			opacity: 0.3;  /*투명도*/
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	<h3>position: fixed 의 응용</h3>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad autem, deleniti praesentium aliquid dolores? Optio commodi ipsum natus esse expedita nihil quasi deleniti sed totam, ad velit hic ut exercitationem.</p>
+	<button>눌러 보셈</button>
+	<div class="backdrop"></div>
+</body>
+</html>
